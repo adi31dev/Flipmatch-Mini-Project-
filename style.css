@@ -1,0 +1,40 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Segoe UI", Arial, sans-serif; min-height: 100vh; color: #fff; padding: 20px 12px;
+  background: linear-gradient(135deg, #1e1b4b, #7c3aed, #ec4899); background-size: 300% 300%;
+  animation: bg 12s ease infinite;
+}
+@keyframes bg { 50% { background-position: 100% 100%; } }
+.game { max-width: 560px; margin: 0 auto; text-align: center; }
+h1 { font-size: 2.4rem; }
+h1 span { color: #fde047; }
+.sub { opacity: .85; margin-bottom: 16px; }
+
+.stats { display: flex; justify-content: center; gap: 12px; margin-bottom: 14px; }
+.stats div { background: rgba(255,255,255,.15); padding: 8px 20px; border-radius: 12px; font-size: .8rem; }
+.stats b { display: block; font-size: 1.4rem; }
+
+.level { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.level button { padding: 8px 16px; border: none; border-radius: 20px; cursor: pointer; font-weight: 600; background: rgba(255,255,255,.2); color: #fff; transition: .2s; }
+.level button:hover, .lvl.active { background: #fde047; color: #222; }
+.restart { background: #fff !important; color: #7c3aed !important; }
+
+.board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.card { aspect-ratio: 1; perspective: 600px; cursor: pointer; }
+.inner { position: relative; width: 100%; height: 100%; transition: transform .5s; transform-style: preserve-3d; }
+.card.flipped .inner, .card.matched .inner { transform: rotateY(180deg); }
+.face { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 14px; backface-visibility: hidden; font-size: clamp(1.8rem, 8vw, 2.8rem); }
+.front { background: rgba(255,255,255,.18); border: 2px solid rgba(255,255,255,.35); font-size: 1.6rem; }
+.card:hover .front { background: rgba(255,255,255,.3); }
+.back { background: #fff; transform: rotateY(180deg); }
+.card.matched .back { background: #bbf7d0; animation: pop .5s; }
+.card.wrong .back { background: #fecaca; animation: shake .4s; }
+@keyframes pop { 50% { transform: rotateY(180deg) scale(1.15); } }
+@keyframes shake { 25% { margin-left: -6px; } 75% { margin-left: 6px; } }
+
+.win { position: fixed; inset: 0; background: rgba(0,0,0,.65); display: grid; place-items: center; z-index: 5; }
+.win.hidden { display: none; }
+.win-card { background: #fff; color: #222; padding: 30px 36px; border-radius: 20px; text-align: center; animation: pop2 .4s; }
+@keyframes pop2 { from { transform: scale(.6); opacity: 0; } }
+.win-card p { margin: 10px 0 18px; font-size: 1.1rem; }
+.win-card button { padding: 10px 26px; border: none; border-radius: 20px; background: #7c3aed; color: #fff; font-weight: 700; cursor: pointer; }

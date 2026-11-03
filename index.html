@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlipMatch - Memory Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game">
+    <h1>🃏 Flip<span>Match</span></h1>
+    <p class="sub">Find all the matching pairs. Fewer moves = better score!</p>
+
+    <div class="stats">
+      <div>Moves<b id="moves">0</b></div>
+      <div>Time<b id="time">0s</b></div>
+      <div>Best<b id="best">--</b></div>
+    </div>
+
+    <div class="level">
+      <button class="lvl active" data-pairs="6">Easy</button>
+      <button class="lvl" data-pairs="8">Medium</button>
+      <button class="lvl" data-pairs="10">Hard</button>
+      <button id="restart" class="restart">🔄 Restart</button>
+    </div>
+
+    <div id="board" class="board"></div>
+  </main>
+
+  <div id="winBox" class="win hidden">
+    <div class="win-card">
+      <h2>🎉 You Won!</h2>
+      <p id="winText"></p>
+      <button id="playAgain">Play Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
